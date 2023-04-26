@@ -12,8 +12,7 @@
     "computed-property-spacing": ["error", "never"],
     "max-len": ["error", { "code": 120, "tabWidth": 4 }],
     "no-var": "error",
-    "space-infix-ops": "error",
-    "no-unused-vars": "error"
+    "space-infix-ops": "error"
   },
   "plugins": ["@typescript-eslint"],
   "extends": ["plugin:@typescript-eslint/recommended"]
