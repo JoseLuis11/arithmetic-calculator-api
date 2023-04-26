@@ -3,6 +3,7 @@ service: arithmetic-calculator-api
 provider:
   name: aws
   runtime: nodejs18.x
+
 useDotenv: true
 
 functions:

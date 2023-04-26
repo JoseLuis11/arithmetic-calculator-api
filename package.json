@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "serverless offline --reloadHandler",
-    "start": "npx serverless offline start",
+    "dev": "serverless offline --reloadHandler --host localhost",
+    "start": "serverless offline start",
     "deploy": "serverless deploy",
     "test": "jest",
     "eslint": "eslint src/**/*.ts tests/**/*.ts",
