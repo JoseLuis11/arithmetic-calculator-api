@@ -11,7 +11,7 @@ const handler: APIGatewayProxyHandler = async (event) => {
 }
 
 const getGreeting = (): string => {
-  return 'Hello worlddd!'
+  return 'Hello world!'
 }
 
 export { handler, getGreeting };
