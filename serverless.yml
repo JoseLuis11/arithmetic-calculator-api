@@ -1,0 +1,25 @@
+service: arithmetic-calculator-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+useDotenv: true
+
+functions:
+  hello:
+    handler: src/v1/functions/hello.handler
+    events:
+      - httpApi: GET /hello
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+
+  serverless-offline:
+    httpPort: 9000
+    host: 0.0.0.0

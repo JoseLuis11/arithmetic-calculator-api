@@ -1,0 +1,7 @@
+node_modules
+.esbuild
+.idea
+.serverless
+npm-debug.log
+.env
+.DS_Store
