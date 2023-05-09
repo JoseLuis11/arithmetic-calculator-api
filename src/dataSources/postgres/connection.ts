@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const postgresDataSource = new DataSource({
-  type: 'postgres',
+  type: 'postgres',asdasda
   url: accessEnv('DB_URI'),
   synchronize: false,
   logging: false,
