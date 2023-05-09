@@ -4,10 +4,22 @@
     "strictNullChecks": true,
     "sourceMap": true,
     "allowJs": true,
+    "esModuleInterop": true,
     "target": "es5",
     "outDir": ".build",
     "moduleResolution": "node",
     "lib": ["es2015"],
-    "rootDir": "./"
+    "rootDir": "./",
+    "baseUrl": ".",
+    "paths": {
+      "@functions": ["src/transport-layer/functions"],
+      "@functions/*": ["src/transport-layer/functions/*"],
+      "@utils/*": ["src/utils/*"],
+      "@core/*": ["src/core/*"],
+      "@entities": ["src/core/entities"]
+    }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }

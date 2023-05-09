@@ -5,7 +5,7 @@ node_modules
 .idea
 logs
 .gitignore
-.env
+.env*
 npm-debug.log
 *.md
 docker-compose.yml

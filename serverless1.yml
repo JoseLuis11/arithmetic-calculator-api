@@ -3,13 +3,14 @@ service: arithmetic-calculator-api
 provider:
   name: aws
   runtime: nodejs18.x
+
 useDotenv: true
 
 functions:
   hello:
-    handler: src/v1/functions/hello.handler
+    handler: src/transport-layer/functions/handler
     events:
-      - httpApi: GET /hello
+      - httpApi: GET /handler
 
 plugins:
   - serverless-esbuild
