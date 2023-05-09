@@ -22,11 +22,15 @@ jobs:
         id: cache-npm
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: npm list
+      - name: Install dependencies
         run: npm ci
 
   build:
@@ -37,15 +41,8 @@ jobs:
         node-version: [ 18.x ]
 
     steps:
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       - name: Print node_modules
-        run: ls -la node_modules
+        run: ls -la ~/.npm
       - uses: actions/checkout@v3
       - name: serverless package
         uses: serverless/github-action@v3.2
