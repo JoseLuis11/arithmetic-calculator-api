@@ -1,18 +1,15 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import { serverErrorResponse, successResponse } from '@utils/response';
+import { runMigrations } from '@utils/DBManager';
 
-export const main: APIGatewayProxyHandler = async (event) => {
+export const main: APIGatewayProxyHandler = async () => {
   try {
+    await runMigrations();
     return successResponse({
-      greeting: getGreeting(),
-      method: event.httpMethod,
+      message: 'If there were any pending migrations, they have been applied successfully'
     });
   } catch (e) {
     console.error(e)
     return serverErrorResponse(e)
   }
-}
-
-export const getGreeting = (): string => {
-  return 'Hello world!'
 }

@@ -3,6 +3,6 @@ node_modules
 .idea
 .serverless
 npm-debug.log
-.env
+.env*
 .DS_Store
 serverless1.yml

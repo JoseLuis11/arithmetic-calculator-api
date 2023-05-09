@@ -5,7 +5,9 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-console": "warn",
+    "no-console": ["warn", {
+      "allow": ["info", "error"]
+    }],
     "quotes": ["error", "single"],
     "object-curly-spacing": ["error", "always"],
     "array-bracket-spacing": ["error", "never"],

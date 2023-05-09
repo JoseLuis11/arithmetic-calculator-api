@@ -9,8 +9,8 @@ export default {
   events: [
     {
       http: {
-        method: HttpMethods.GET,
-        path: `/${V1}/hello`
+        method: HttpMethods.POST,
+        path: `/${V1}/revert-migrations`
       },
     },
   ],

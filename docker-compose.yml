@@ -3,6 +3,23 @@ services:
   server:
     build:
       context: .
+    depends_on:
+      - postgres
+    environment:
+      #this variable would be managed with a docker secret
+      DB_URI: postgresql://postgres:pwd@postgres:5432/arithmetic-calculator
+
     ports:
       - "9001:9000"
     command: npm run start
+
+  postgres:
+    image: postgres:15.2
+    user: postgres
+    ports:
+      - "15432:5432"
+    environment:
+      #this info would be managed with docker secrets
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: arithmetic-calculator
