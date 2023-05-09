@@ -2,9 +2,9 @@ name: Build and run tests
 
 on:
   push:
-    branches: [ '**' ]
+    branches-ignore: [ 'main', 'release/**' ]
   pull_request:
-    branches: [ '**' ]
+    branches: [ 'release/**' ]
 
 jobs:
   install:
