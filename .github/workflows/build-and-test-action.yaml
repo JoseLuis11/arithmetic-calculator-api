@@ -25,7 +25,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: npm ci
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        run: npm ci
 
   build:
     needs: install
@@ -35,6 +36,13 @@ jobs:
         node-version: [ 18.x ]
 
     steps:
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Print node_modules
         run: ls -la node_modules
       - uses: actions/checkout@v3
