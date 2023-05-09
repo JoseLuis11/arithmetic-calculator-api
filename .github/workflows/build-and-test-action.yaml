@@ -35,6 +35,8 @@ jobs:
         node-version: [ 18.x ]
 
     steps:
+      - name: Print node_modules
+        run: ls -la node_modules
       - uses: actions/checkout@v3
       - name: serverless package
         uses: serverless/github-action@v3.2
