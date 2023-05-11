@@ -9,7 +9,7 @@
     "package": "serverless package",
     "deploy:dev": "serverless deploy --stage dev",
     "test:locally": "jest --setupFiles ./tests/setupTests.ts",
-    "test": "jest",
+    "test": "jest --verbose",
     "eslint": "eslint src/**/*.ts tests/**/*.ts",
     "prepare": "husky install",
     "typeorm": "typeorm-ts-node-commonjs -d src/dataSources/postgres/connection.ts",
