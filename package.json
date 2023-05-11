@@ -8,13 +8,14 @@
     "start": "serverless offline start --stage local",
     "package": "serverless package",
     "deploy:dev": "serverless deploy --stage dev",
+    "test:locally": "jest --setupFiles ./tests/setupTests.ts",
     "test": "jest",
     "eslint": "eslint src/**/*.ts tests/**/*.ts",
     "prepare": "husky install",
     "typeorm": "typeorm-ts-node-commonjs -d src/dataSources/postgres/connection.ts",
     "migrate": "npm run typeorm migration:run",
     "migrate:revert": "npm run typeorm migration:revert",
-    "migration:generate": "npm run typeorm migration:generate --pretty=true src/dataSources/typeorm/migrations/%npm_config_name%"
+    "migration:generate": "npm run typeorm migration:generate --pretty=true src/dataSources/postgres/typeorm/migrations/%npm_config_name%"
   },
   "keywords": [],
   "author": "",

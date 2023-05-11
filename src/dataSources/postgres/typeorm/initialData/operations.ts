@@ -2,7 +2,7 @@ import OperationType from '@core/enums/OperationType';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { Operation } from '@entities';
 
-export const initialOperations:  QueryDeepPartialEntity<Operation> | QueryDeepPartialEntity<Operation>[] = [
+export const initialOperations: QueryDeepPartialEntity<Operation>[] = [
   {
     type: OperationType.ADDITION,
     cost: 100.20

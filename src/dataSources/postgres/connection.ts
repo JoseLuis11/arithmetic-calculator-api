@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
-import OperationSchema from '../typeorm/schemas/OperationSchema';
-import { migrations } from '../typeorm/migrations';
+import { migrations } from './typeorm/migrations';
+import { schemas } from './typeorm/schemas';
 import accessEnv from '@utils/accessEnv';
 import dotenv from 'dotenv';
 
@@ -11,7 +11,7 @@ const postgresDataSource = new DataSource({
   url: accessEnv('DB_URI'),
   synchronize: false,
   logging: false,
-  entities: [OperationSchema],
+  entities: [...schemas],
   migrations: [...migrations],
 })
 

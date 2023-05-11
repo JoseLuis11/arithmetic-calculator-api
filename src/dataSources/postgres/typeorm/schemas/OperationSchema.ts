@@ -1,6 +1,6 @@
 import { EntitySchema } from 'typeorm';
-import Operation from '../../../core/entities/Operation';
-import OperationType from '../../../core/enums/OperationType';
+import Operation from '@core/entities/Operation';
+import OperationType from '@core/enums/OperationType';
 
 const OperationSchema = new EntitySchema<Operation>({
   name: 'Operation',

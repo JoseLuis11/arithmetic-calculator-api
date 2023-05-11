@@ -1,6 +1,6 @@
 import OperationRepository from '../core/repositories/OperationRepository';
 import Operation from '../core/entities/Operation';
-import OperationSchema from './typeorm/schemas/OperationSchema';
+import OperationSchema from './postgres/typeorm/schemas/OperationSchema';
 import { Repository } from 'typeorm';
 import postgresDataSource from './postgres/connection';
 import DBOperationHandler from './utils/dbOperationHandler';

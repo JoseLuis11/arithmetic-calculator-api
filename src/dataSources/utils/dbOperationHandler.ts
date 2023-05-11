@@ -5,7 +5,9 @@ const DBOperationHandler = async (dataSource, callback) => {
     await dataSource.initialize();
   }
   await callback();
-  await dataSource.destroy();
+  if (dataSource.isInitialized) {
+    await dataSource.destroy();
+  }
 }
 
 export default DBOperationHandler;
