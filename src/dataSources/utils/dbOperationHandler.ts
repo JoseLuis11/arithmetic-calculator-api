@@ -1,7 +1,5 @@
 const DBOperationHandler = async (dataSource, callback) => {
-  if (dataSource.isInitialized) {
-    console.info('database is already initialized')
-  } else {
+  if (!dataSource.isInitialized) {
     await dataSource.initialize();
   }
   await callback();
