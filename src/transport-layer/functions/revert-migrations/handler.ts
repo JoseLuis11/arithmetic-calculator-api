@@ -1,15 +1,14 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { serverErrorResponse, successResponse } from '@utils/response';
-import { revertMigrations } from '@utils/DBManager';
+import { successResponse } from '@utils/response';
+import { middyfyWithAuthentication } from '@utils/middyfy';
+import UserType from '@core/enums/UserType';
+import { migrationInteractor } from '@core/interactors';
 
-export const main: APIGatewayProxyHandler = async () => {
-  try {
-    await revertMigrations();
-    return successResponse({
-      message: 'If there were any applied migrations, they have been reverted successfully'
-    });
-  } catch (e) {
-    console.error(e)
-    return serverErrorResponse(e)
-  }
+const revertMigrationsHandler: APIGatewayProxyHandler = async () => {
+  await migrationInteractor.revertMigrations();
+  return successResponse({
+    message: 'If there were any applied migrations, they have been reverted successfully'
+  });
 }
+
+export const main = middyfyWithAuthentication(revertMigrationsHandler, UserType.ADMIN)

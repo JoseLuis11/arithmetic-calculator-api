@@ -1,5 +1,5 @@
 interface Entity {
-  id: string;
+  id?: string;
   createdAt?: Date;
   updatedAt?: Date
 }

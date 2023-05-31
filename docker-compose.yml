@@ -6,8 +6,14 @@ services:
     depends_on:
       - postgres
     environment:
-      #this variable would be managed with a docker secret
+      JWT_TOKEN_EXPIRES_IN: 20m
+      USER_STARTING_BALANCE: 5000
+      PASSWORD_MIN: 8
+      PASSWORD_MAX: 72
+      #these variables should be managed with docker secrets
       DB_URI: postgresql://postgres:pwd@postgres:5432/arithmetic-calculator
+      AWS_ACCESS_KEY_ID: AWS ACCESS KEY ID goes here
+      AWS_SECRET_ACCESS_KEY: AWS SECRET ACCESS KEY goes here
 
     ports:
       - "9001:9000"

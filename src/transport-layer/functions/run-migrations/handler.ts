@@ -1,15 +1,14 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { serverErrorResponse, successResponse } from '@utils/response';
-import { runMigrations } from '@utils/DBManager';
+import { successResponse } from '@utils/response';
+import { middyfyWithAuthentication } from '@utils/middyfy';
+import UserType from '@core/enums/UserType';
+import { migrationInteractor } from '@core/interactors';
 
-export const main: APIGatewayProxyHandler = async () => {
-  try {
-    await runMigrations();
-    return successResponse({
-      message: 'If there were any pending migrations, they have been applied successfully'
-    });
-  } catch (e) {
-    console.error(e)
-    return serverErrorResponse(e)
-  }
+const runMigrationsHandler: APIGatewayProxyHandler = async () => {
+  await migrationInteractor.runMigrations();
+  return successResponse({
+    message: 'If there were any pending migrations, they have been applied successfully'
+  });
 }
+
+export const main = middyfyWithAuthentication(runMigrationsHandler, UserType.ADMIN);

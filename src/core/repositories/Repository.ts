@@ -5,7 +5,7 @@ interface Repository<T, ID> {
 
   findAll?(options: object): Promise<T[]>;
 
-  findOne?(id: ID): Promise<T> | null;
+  findOne?(id: ID): Promise<T | null> ;
 
   update?(id: ID, item: T): Promise<T>;
 }

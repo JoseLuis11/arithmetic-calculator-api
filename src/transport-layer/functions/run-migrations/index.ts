@@ -1,4 +1,4 @@
-import { handlerPath } from '@utils/handler-resolver';
+import { handlerPath } from '@utils/handlerResolver';
 import { HttpMethods } from '../../enums/httpMethods';
 import { versions } from '../../constants/versions';
 

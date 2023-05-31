@@ -1,20 +1,22 @@
-import Response from '../transport-layer/model/Response';
+import Response from '../transport-layer/interfaces/Response';
 import StatusCodes from '../transport-layer/enums/statusCodes';
+import HttpError from '@core/interactors/errors/HttpError';
 
-const successResponse = (response): Response => {
+const successResponse = (response: object): Response => {
   return {
     statusCode: StatusCodes.OK,
     body: JSON.stringify({ ...response }),
   }
 }
 
-const serverErrorResponse = (error): Response => {
+const errorResponse = (error: HttpError): Response => {
   return {
-    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+    statusCode: error.errorStatusCode,
     body: JSON.stringify({
-      error: error.message
+      name: error.name,
+      message: error.message
     })
   }
 }
 
-export { successResponse, serverErrorResponse }
+export { successResponse, errorResponse }
