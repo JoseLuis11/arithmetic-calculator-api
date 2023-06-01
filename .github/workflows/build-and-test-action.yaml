@@ -79,8 +79,3 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - run: npm test
-        env:
-          USER_STARTING_BALANCE: ${{ env.USER_STARTING_BALANCE }}
-          JWT_TOKEN_EXPIRES_IN: ${{ env.JWT_TOKEN_EXPIRES_IN }}
-          PASSWORD_MIN: ${{ env.PASSWORD_MIN }}
-          PASSWORD_MAX: ${{ env.PASSWORD_MAX }}
