@@ -1,15 +1,13 @@
 import Joi from 'joi';
 import accessEnv from '@utils/accessEnv';
 
-const min = accessEnv('PASSWORD_MIN');
-
 const userSignedUpValidator = Joi.object({
   username: Joi.string()
     .required()
     .email(),
   password: Joi.string()
     .required()
-    .min(parseInt(min))
+    .min(parseInt(accessEnv('PASSWORD_MIN')))
     .max(parseInt(accessEnv('PASSWORD_MAX')))
 });
 
