@@ -3,8 +3,6 @@ import accessEnv from '@utils/accessEnv';
 
 const min = accessEnv('PASSWORD_MIN');
 
-console.log('min', min)
-console.log('typeof min', typeof min)
 const userSignedUpValidator = Joi.object({
   username: Joi.string()
     .required()
