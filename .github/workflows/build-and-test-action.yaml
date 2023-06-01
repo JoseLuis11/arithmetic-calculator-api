@@ -52,11 +52,6 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          USER_STARTING_BALANCE: ${{ env.USER_STARTING_BALANCE }}
-          JWT_TOKEN_EXPIRES_IN: ${{ env.JWT_TOKEN_EXPIRES_IN }}
-          PASSWORD_MIN: ${{ env.PASSWORD_MIN }}
-          PASSWORD_MAX: ${{ env.PASSWORD_MAX }}
 
   run-tests:
     needs: build
@@ -79,3 +74,6 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - run: npm test
+        env:
+          PASSWORD_MIN: ${{ vars.PASSWORD_MIN }}
+          PASSWORD_MAX: ${{ vars.PASSWORD_MAX }}
