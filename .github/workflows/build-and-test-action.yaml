@@ -52,7 +52,8 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
+          PASSWORD_MIN: ${{ vars.PASSWORD_MIN }}
+          PASSWORD_MAX: ${{ vars.PASSWORD_MAX }}
   run-tests:
     needs: build
     runs-on: ubuntu-latest
