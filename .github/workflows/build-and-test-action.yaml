@@ -54,6 +54,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           PASSWORD_MIN: ${{ vars.PASSWORD_MIN }}
           PASSWORD_MAX: ${{ vars.PASSWORD_MAX }}
+          USER_STARTING_BALANCE: ${{ vars.USER_STARTING_BALANCE }}
+          JWT_TOKEN_EXPIRES_IN: ${{ vars.JWT_TOKEN_EXPIRES_IN }}
   run-tests:
     needs: build
     runs-on: ubuntu-latest
