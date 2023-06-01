@@ -95,6 +95,15 @@ describe('authentication interactor test suite', () => {
         .rejects.toThrow(`"password" length must be less than or equal to ${process.env.PASSWORD_MAX} characters long`)
     })
 
+    test(`throw "password" length must be less than or equal to ${process.env.PASSWORD_MAX} characters long" error ` +
+      'when the password length is more than PASSWORD_MAX env using emojis', async () => {
+      await expect(sut.signup({
+        username: 'test@test.com',
+        password: '😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊'
+      }))
+        .rejects.toThrow(`"password" length must be less than or equal to ${process.env.PASSWORD_MAX} characters long`)
+    })
+
     test('throw Username already exists error when user is found from userRepository', async () => {
       jest.spyOn(userRepository, 'findOneByUsername')
         .mockImplementation(async (username: string): Promise<User | null> => {
